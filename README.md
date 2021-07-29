@@ -4,7 +4,7 @@
 ## What sections are implemented?
 1. The Login and sign up section which is
  	- calendarApp
-        	- I'm yet to add a splash screen
+        	### I'm yet to add a splash screen
         	- Yet to add firebase authentication
         	- The calendar portion of this section will be removed when the calendar section below is completed
 2. The calendar section where you can choose and enter a course information to be stored in the data base
