@@ -49,16 +49,20 @@ class _CalendarState extends State<Calendar> {
           )),
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Expanded(flex: 1, child: Text(d[0], style: Theme.of(context).primaryTextTheme.bodyText1)),
-                Expanded(flex: 1, child: Text(d[1], style: Theme.of(context).primaryTextTheme.bodyText1)),
-                Expanded(flex: 1, child: Text(d[0], style: Theme.of(context).primaryTextTheme.bodyText1)),
+                Column(
+                  children: [
+                    Expanded(flex: 1, child: Text(d[0], style: Theme.of(context).primaryTextTheme.headline1)),
+                    Expanded(flex: 1, child: Text(d[1], style: Theme.of(context).primaryTextTheme.headline2)),
+                    Expanded(flex: 1, child: Text(d[2], style: Theme.of(context).primaryTextTheme.bodyText1)),
+                  ],
+                ),
                 IconButton(
                     icon: FaIcon(
                       FontAwesomeIcons.trashAlt,
                       color: Colors.redAccent,
                       size: 15,
                 ),
-                onPressed: () => _deleteEvent(d))
+                onPressed: () => _deleteEvent(d[0]))
           ])),
     );
   }
@@ -213,7 +217,7 @@ class _CalendarState extends State<Calendar> {
   }
 
   // Delete doesnt refresh yet, thats it, then done!
-  void _deleteEvent(String s) {
+  void _deleteEvent(var s) {
     List<CalendarItem> d = _data.where((element) => element.code == s).toList();
     if (d.length == 1) {
       DB.delete(CalendarItem.table, d[0]);
