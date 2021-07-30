@@ -49,9 +49,9 @@ class _CalendarState extends State<Calendar> {
           )),
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Expanded(flex: 1, child: Text(d.code, style: Theme.of(context).primaryTextTheme.bodyText1)),
-                Expanded(flex: 1, child: Text(d.name, style: Theme.of(context).primaryTextTheme.bodyText1)),
-                Expanded(flex: 1, child: Text(d.description, style: Theme.of(context).primaryTextTheme.bodyText1)),
+                Expanded(flex: 1, child: Text(d[0], style: Theme.of(context).primaryTextTheme.bodyText1)),
+                Expanded(flex: 1, child: Text(d[1], style: Theme.of(context).primaryTextTheme.bodyText1)),
+                Expanded(flex: 1, child: Text(d[0], style: Theme.of(context).primaryTextTheme.bodyText1)),
                 IconButton(
                     icon: FaIcon(
                       FontAwesomeIcons.trashAlt,
@@ -206,7 +206,7 @@ class _CalendarState extends State<Calendar> {
     CalendarItem item =
         CalendarItem(date: _selectedDay.toString(),code: code, name: name, description: description);
     await DB.insert(CalendarItem.table, item);
-    _selectedEvents.add({code , name, description});
+    _selectedEvents.add([code , name, description]);
     _fetchEvents();
 
     Navigator.pop(context);
