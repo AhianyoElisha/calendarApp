@@ -49,12 +49,14 @@ class _CalendarState extends State<Calendar> {
           )),
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text(d, style: Theme.of(context).primaryTextTheme.bodyText1),
-            IconButton(
-                icon: FaIcon(
-                  FontAwesomeIcons.trashAlt,
-                  color: Colors.redAccent,
-                  size: 15,
+                Expanded(flex: 1, child: Text(d.code, style: Theme.of(context).primaryTextTheme.bodyText1)),
+                Expanded(flex: 1, child: Text(d.name, style: Theme.of(context).primaryTextTheme.bodyText1)),
+                Expanded(flex: 1, child: Text(d.description, style: Theme.of(context).primaryTextTheme.bodyText1)),
+                IconButton(
+                    icon: FaIcon(
+                      FontAwesomeIcons.trashAlt,
+                      color: Colors.redAccent,
+                      size: 15,
                 ),
                 onPressed: () => _deleteEvent(d))
           ])),
@@ -69,20 +71,50 @@ class _CalendarState extends State<Calendar> {
   }
 
   void _create(BuildContext context) {
-    String _name = "";
-    var content = TextField(
+    String _code = "";
+    var content1 = TextField(
       style: GoogleFonts.montserrat(
           color: Color.fromRGBO(105, 105, 108, 1), fontSize: 16),
       autofocus: true,
       decoration: InputDecoration(
         labelStyle: GoogleFonts.montserrat(
             color: Color.fromRGBO(59, 57, 60, 1),
-            fontSize: 18,
+            fontSize: 16,
             fontWeight: FontWeight.normal),
-        labelText: 'Workout Name',
+        labelText: 'Course Code',
+      ),
+      onChanged: (value) {
+        _code = value;
+      },
+    );
+    String _name = "";
+    var content2 = TextField(
+      style: GoogleFonts.montserrat(
+          color: Color.fromRGBO(105, 105, 108, 1), fontSize: 16),
+      decoration: InputDecoration(
+        labelStyle: GoogleFonts.montserrat(
+            color: Color.fromRGBO(59, 57, 60, 1),
+            fontSize: 16,
+            fontWeight: FontWeight.normal),
+        labelText: 'Course Title',
       ),
       onChanged: (value) {
         _name = value;
+      },
+    );
+    String _description = "";
+    var content3 = TextField(
+      style: GoogleFonts.montserrat(
+          color: Color.fromRGBO(105, 105, 108, 1), fontSize: 16),
+      decoration: InputDecoration(
+        labelStyle: GoogleFonts.montserrat(
+            color: Color.fromRGBO(59, 57, 60, 1),
+            fontSize: 16,
+            fontWeight: FontWeight.normal),
+        labelText: 'Course Description',
+      ),
+      onChanged: (value) {
+        _description = value;
       },
     );
     var btn = TextButton(
@@ -91,7 +123,7 @@ class _CalendarState extends State<Calendar> {
               color: Color.fromRGBO(59, 57, 60, 1),
               fontSize: 16,
               fontWeight: FontWeight.bold)),
-      onPressed: () => _addEvent(_name),
+      onPressed: () => _addEvent(_code,_name,_description),
     );
     var cancelButton = TextButton(
         child: Text('Cancel',
@@ -128,12 +160,14 @@ class _CalendarState extends State<Calendar> {
                 mainAxisSize: MainAxisSize.min, // To make the card compact
                 children: <Widget>[
                   SizedBox(height: 16.0),
-                  Text("Add Event",
+                  Text("Add Course Information",
                       style: GoogleFonts.montserrat(
                           color: Color.fromRGBO(59, 57, 60, 1),
                           fontSize: 18,
                           fontWeight: FontWeight.bold)),
-                  Container(padding: EdgeInsets.all(20), child: content),
+                  Container(padding: EdgeInsets.all(20), child: content1),
+                  Container(padding: EdgeInsets.all(20), child: content2),
+                  Container(padding: EdgeInsets.all(20), child: content3),
                   Row(
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[btn, cancelButton]),
@@ -154,19 +188,25 @@ class _CalendarState extends State<Calendar> {
       DateTime formattedDate = DateTime.parse(DateFormat('yyyy-MM-dd')
           .format(DateTime.parse(element.date.toString())));
       if (_events.containsKey(formattedDate)) {
+        _events[formattedDate]!.add(element.code.toString());
         _events[formattedDate]!.add(element.name.toString());
+        _events[formattedDate]!.add(element.description.toString());
       } else {
-        _events[formattedDate] = [element.name.toString()];
+        _events[formattedDate] = [
+          element.code.toString(),
+          element.name.toString(),
+          element.description.toString()
+        ];
       }
     });
     setState(() {});
   }
 
-  void _addEvent(String event) async {
+  void _addEvent(String code, name, description) async {
     CalendarItem item =
-        CalendarItem(date: _selectedDay.toString(), name: event);
+        CalendarItem(date: _selectedDay.toString(),code: code, name: name, description: description);
     await DB.insert(CalendarItem.table, item);
-    _selectedEvents.add(event);
+    _selectedEvents.add({code , name, description});
     _fetchEvents();
 
     Navigator.pop(context);
@@ -174,7 +214,7 @@ class _CalendarState extends State<Calendar> {
 
   // Delete doesnt refresh yet, thats it, then done!
   void _deleteEvent(String s) {
-    List<CalendarItem> d = _data.where((element) => element.name == s).toList();
+    List<CalendarItem> d = _data.where((element) => element.code == s).toList();
     if (d.length == 1) {
       DB.delete(CalendarItem.table, d[0]);
       _selectedEvents.removeWhere((e) => e == s);
@@ -237,14 +277,14 @@ class _CalendarState extends State<Calendar> {
     if (_selectedEvents.length == 0) {
       return Container(
         padding: EdgeInsets.fromLTRB(15, 20, 15, 15),
-        child: Text("No events",
+        child: Text("No Course Information",
             style: Theme.of(context).primaryTextTheme.headline1),
       );
     }
     return Container(
       padding: EdgeInsets.fromLTRB(15, 20, 15, 15),
       child:
-          Text("Events", style: Theme.of(context).primaryTextTheme.headline1),
+          Text("Course Information", style: Theme.of(context).primaryTextTheme.headline1),
     );
   }
 
@@ -260,7 +300,7 @@ class _CalendarState extends State<Calendar> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Calendar",
+                Text("Course Schedule",
                     style: Theme.of(context).primaryTextTheme.headline1),
                 Consumer<ThemeNotifier>(
                     builder: (context, notifier, child) => IconButton(

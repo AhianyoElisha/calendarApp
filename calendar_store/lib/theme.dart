@@ -12,6 +12,11 @@ ThemeData light = ThemeData(
         fontSize: 22,
         fontWeight: FontWeight.bold),
 
+    headline2: GoogleFonts.montserrat(
+        color: Color.fromRGBO(59, 57, 60, 1),
+        fontSize: 19,
+        fontWeight: FontWeight.w500),
+
     // List Font
     bodyText1: GoogleFonts.montserrat(
         color: Color.fromRGBO(105, 105, 108, 1), fontSize: 16),
