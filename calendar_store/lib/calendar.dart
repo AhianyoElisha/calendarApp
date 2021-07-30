@@ -48,12 +48,27 @@ class _CalendarState extends State<Calendar> {
             top: BorderSide(color: Theme.of(context).dividerColor),
           )),
           child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Column(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+                
                   children: [
-                    Expanded(flex: 1, child: Text(d[0], style: Theme.of(context).primaryTextTheme.headline1)),
-                    Expanded(flex: 1, child: Text(d[1], style: Theme.of(context).primaryTextTheme.headline2)),
-                    Expanded(flex: 1, child: Text(d[2], style: Theme.of(context).primaryTextTheme.bodyText1)),
+                    Expanded(flex: 1,
+                     child: Text(d[0], 
+                     style: Theme.of(context).primaryTextTheme.headline1
+                     )
+                    ),
+                    Expanded(flex: 1,
+                     child: Text(d[1], 
+                     style: Theme.of(context).primaryTextTheme.headline2
+                     )
+                    ),
+                    Expanded(flex: 1, 
+                      child: Text(d[2], 
+                      style: Theme.of(context).primaryTextTheme.bodyText1
+                    )
+                    ),
                   ],
                 ),
                 IconButton(
