@@ -28,17 +28,22 @@ ThemeData dark = ThemeData(
     accentColor: Color.fromRGBO(200, 200, 200, 1),
     dividerColor: Color.fromRGBO(200, 200, 200, 0.1),
     primaryTextTheme: TextTheme(
-        // Section Headings
-        headline1: GoogleFonts.montserrat(
-            color: Color.fromRGBO(250, 250, 250, 1),
-            fontSize: 22,
-            fontWeight: FontWeight.bold),
+      // Section Headings
+      headline1: GoogleFonts.montserrat(
+          color: Color.fromRGBO(250, 250, 250, 1),
+          fontSize: 22,
+          fontWeight: FontWeight.bold),
 
-        // List Font
-        bodyText1: GoogleFonts.montserrat(
-            color: Color.fromRGBO(200, 200, 200, 1), fontSize: 16),
+      headline2: GoogleFonts.montserrat(
+          color: Color.fromRGBO(225, 225, 225, 1),
+          fontSize: 19,
+          fontWeight: FontWeight.w500),
 
-        
+      // List Font
+      bodyText1: GoogleFonts.montserrat(
+          color: Color.fromRGBO(200, 200, 200, 1), fontSize: 16),
+
+      // List Font
     ));
 
 class ThemeNotifier extends ChangeNotifier {

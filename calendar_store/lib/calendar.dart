@@ -38,42 +38,43 @@ class _CalendarState extends State<Calendar> {
   }
 
   Widget events(var d) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-      child: Container(
-          width: MediaQuery.of(context).size.width * 0.9,
-          padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
-          decoration: BoxDecoration(
-              border: Border(
-            top: BorderSide(color: Theme.of(context).dividerColor),
-          )),
-          child:
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Expanded(flex: 1,
-                 child: Text(d[0], 
-                 style: Theme.of(context).primaryTextTheme.headline1
-                 )
+    return ListTile(
+        contentPadding: EdgeInsets.only(top: 10.0, left: 15.0, right: 5.0),
+        isThreeLine: true,
+        title: Text(d[0], style: Theme.of(context).primaryTextTheme.headline1),
+        subtitle: Wrap(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 5.0),
+                    child: Text(d[1],
+                        style: Theme.of(context).primaryTextTheme.headline2),
+                  ),
                 ),
-                Expanded(flex: 1,
-                 child: Text(d[1], 
-                 style: Theme.of(context).primaryTextTheme.headline2
-                 )
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 5.0),
+                    child: Text(d[2],
+                        style: Theme.of(context).primaryTextTheme.bodyText1),
+                  ),
                 ),
-                Expanded(flex: 1, 
-                  child: Text(d[2], 
-                  style: Theme.of(context).primaryTextTheme.bodyText1
-                )
-                ),
-                IconButton(
-                    icon: FaIcon(
-                      FontAwesomeIcons.trashAlt,
-                      color: Colors.redAccent,
-                      size: 15,
-                ),
-                onPressed: () => _deleteEvent(d[0]))
-          ])),
-    );
+              ],
+            )
+          ],
+        ),
+        trailing: IconButton(
+            icon: FaIcon(
+              FontAwesomeIcons.trashAlt,
+              color: Colors.redAccent,
+              size: 15,
+            ),
+            onPressed: () => _deleteEvent(d[0])));
   }
 
   void _onDaySelected(DateTime day, List events, _) {
@@ -97,7 +98,7 @@ class _CalendarState extends State<Calendar> {
         labelText: 'Course Code',
       ),
       onChanged: (value) {
-        _code = value;
+        _code = value.toUpperCase();
       },
     );
     String _name = "";
@@ -136,7 +137,7 @@ class _CalendarState extends State<Calendar> {
               color: Color.fromRGBO(59, 57, 60, 1),
               fontSize: 16,
               fontWeight: FontWeight.bold)),
-      onPressed: () => _addEvent(_code,_name,_description),
+      onPressed: () => _addEvent(_code, _name, _description),
     );
     var cancelButton = TextButton(
         child: Text('Cancel',
@@ -201,14 +202,18 @@ class _CalendarState extends State<Calendar> {
       DateTime formattedDate = DateTime.parse(DateFormat('yyyy-MM-dd')
           .format(DateTime.parse(element.date.toString())));
       if (_events.containsKey(formattedDate)) {
-        _events[formattedDate]!.add(element.code.toString());
-        _events[formattedDate]!.add(element.name.toString());
-        _events[formattedDate]!.add(element.description.toString());
-      } else {
-        _events[formattedDate] = [
+        _events[formattedDate]!.add([
           element.code.toString(),
           element.name.toString(),
           element.description.toString()
+        ]);
+      } else {
+        _events[formattedDate] = [
+          [
+            element.code.toString(),
+            element.name.toString(),
+            element.description.toString()
+          ]
         ];
       }
     });
@@ -216,10 +221,13 @@ class _CalendarState extends State<Calendar> {
   }
 
   void _addEvent(String code, name, description) async {
-    CalendarItem item =
-        CalendarItem(date: _selectedDay.toString(),code: code, name: name, description: description);
+    CalendarItem item = CalendarItem(
+        date: _selectedDay.toString(),
+        code: code,
+        name: name,
+        description: description);
     await DB.insert(CalendarItem.table, item);
-    _selectedEvents.add([code , name, description]);
+    _selectedEvents.add([code, name, description]);
     _fetchEvents();
 
     Navigator.pop(context);
@@ -230,7 +238,7 @@ class _CalendarState extends State<Calendar> {
     List<CalendarItem> d = _data.where((element) => element.code == s).toList();
     if (d.length == 1) {
       DB.delete(CalendarItem.table, d[0]);
-      _selectedEvents.removeWhere((e) => e == s);
+      _selectedEvents.removeWhere((e) => e[0] == s);
       _fetchEvents();
     }
   }
@@ -296,8 +304,8 @@ class _CalendarState extends State<Calendar> {
     }
     return Container(
       padding: EdgeInsets.fromLTRB(15, 20, 15, 15),
-      child:
-          Text("Course Information", style: Theme.of(context).primaryTextTheme.headline1),
+      child: Text("Course Information",
+          style: Theme.of(context).primaryTextTheme.headline1),
     );
   }
 
