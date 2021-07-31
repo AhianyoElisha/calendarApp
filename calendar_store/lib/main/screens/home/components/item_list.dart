@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/screens/details/details-screen.dart';
-import 'package:food_app/screens/home/components/item_card.dart';
+import 'package:calendar_store/main/screens/details/details-screen.dart';
+import 'package:calendar_store/main/screens/home/components/item_card.dart';
 
 class ItemList extends StatelessWidget {
   const ItemList({

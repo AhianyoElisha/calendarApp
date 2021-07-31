@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/constants.dart';
-import 'package:food_app/screens/details/components/item_image.dart';
-import 'package:food_app/screens/details/components/order_button.dart';
-import 'package:food_app/screens/details/components/title_price_rating.dart';
+import 'package:calendar_store/theme.dart';
+import 'package:calendar_store/main/screens/details/components/item_image.dart';
+import 'package:calendar_store/main/screens/details/components/order_button.dart';
+import 'package:calendar_store/main/screens/details/components/title_price_rating.dart';
 
 class Body extends StatelessWidget {
   @override

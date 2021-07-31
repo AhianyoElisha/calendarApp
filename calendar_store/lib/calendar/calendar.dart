@@ -1,8 +1,8 @@
 import 'dart:core';
 
 import 'package:flutter/material.dart';
-import 'package:calendar_store/calendar_model.dart';
-import 'package:calendar_store/db.dart';
+import 'package:calendar_store/calendar/calendar_model.dart';
+import 'package:calendar_store/calendar/db.dart';
 import 'package:calendar_store/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

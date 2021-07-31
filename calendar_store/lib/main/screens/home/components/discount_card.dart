@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:food_app/constants.dart';
+import 'package:calendar_store/theme.dart';
 
 class DiscountCard extends StatelessWidget {
   const DiscountCard({

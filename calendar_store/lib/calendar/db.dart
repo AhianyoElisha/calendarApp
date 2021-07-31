@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:calendar_store/calendar_model.dart';
+import 'package:calendar_store/calendar/calendar_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as p;
 

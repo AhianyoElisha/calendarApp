@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
+const kPrimaryColor = Color(0xFFFFC61F);
+const ksecondaryColor = Color(0xFFB5BFD0);
+const kTextColor = Color(0xFF50505D);
+const kTextLightColor = Color(0xFF6A727D);
+
+
+
+
 ThemeData light = ThemeData(
   primaryColor: Color.fromRGBO(246, 248, 250, 1.0),
   accentColor: Color.fromRGBO(50, 50, 50, 1),
@@ -18,9 +27,16 @@ ThemeData light = ThemeData(
         fontWeight: FontWeight.w500),
 
     // List Font
-    bodyText1: GoogleFonts.montserrat(
-        color: Color.fromRGBO(105, 105, 108, 1), fontSize: 16),
+    bodyText1: GoogleFonts.montserrat(color:
+    Color.fromRGBO(105, 105, 108, 1), fontSize: 16),
+    bodyText2: GoogleFonts.montserrat(color:
+    Color.fromRGBO(105, 105, 108, 1),),
+
+      //
+      // bodyText2: TextStyle(color: ksecondaryColor),
+      // bodyText1: TextStyle(color: ksecondaryColor),
   ),
+
 );
 
 ThemeData dark = ThemeData(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/constants.dart';
+import 'package:calendar_store/theme.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class TitlePriceRating extends StatelessWidget {

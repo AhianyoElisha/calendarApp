@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/screens/home/components/category_item.dart';
+import 'package:calendar_store/main/screens/home/components/category_item.dart';
 
 class CategoryList extends StatelessWidget {
   const CategoryList({
