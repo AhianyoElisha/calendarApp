@@ -257,7 +257,7 @@ class _CalendarState extends State<Calendar> {
             color: Colors.white,
             borderRadius: BorderRadius.circular(6),
             gradient:
-                LinearGradient(colors: [Colors.red[600]!, Colors.red[400]!]),
+                LinearGradient(colors: [Color(0xFFF2A50D), Color(0xFFFFD10D)]),
             boxShadow: <BoxShadow>[
               BoxShadow(
                   color: Colors.black12,
@@ -271,10 +271,10 @@ class _CalendarState extends State<Calendar> {
             weekdayStyle: TextStyle(color: Colors.white),
             todayColor: Colors.white54,
             todayStyle: TextStyle(
-                color: Colors.redAccent,
+                color: Color(0xFFF2A50D),
                 fontSize: 15,
                 fontWeight: FontWeight.bold),
-            selectedColor: Colors.red[900],
+            selectedColor: Color(0xFFFFD10D),
             outsideWeekendStyle: TextStyle(color: Colors.white60),
             outsideStyle: TextStyle(color: Colors.white60),
             weekendStyle: TextStyle(color: Colors.white),
@@ -351,7 +351,7 @@ class _CalendarState extends State<Calendar> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Color(0xFFF2A50D),
         onPressed: () => _create(context),
         child: Icon(
           Icons.add,

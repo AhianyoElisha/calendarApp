@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:calendar_store/calendar/introScreen/utilities/styles.dart';
+import 'package:calendar_store/introScreen/utilities/styles.dart';
 import 'package:calendar_store/loginAndSignIn/loginAndSignin.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -58,20 +58,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Container(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => LoginPage())),
-                    child: Text(
-                      'Skip',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0,
-                      ),
-                    ),
-                  ),
-                ),
                 Container(
                   height: 600.0,
                   child: PageView(
@@ -175,7 +161,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ? Expanded(
                         child: Align(
                           alignment: FractionalOffset.bottomRight,
-                          child: FlatButton(
+                          child: TextButton(
                             onPressed: () {
                               _pageController.nextPage(
                                 duration: Duration(milliseconds: 500),
@@ -203,37 +189,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                           ),
                         ),
-                      ): Expanded(
-                          child: Align(
-                            alignment: FractionalOffset.bottomRight,
-                              child: FlatButton(
-                                onPressed: () {
-                                  Navigator.of(context).push(
-                                      MaterialPageRoute(builder: (context) => LoginPage())
-                                  );
-                                },
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: <Widget>[
-                                    Text(
-                                      'Done',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 22.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
+                      )
+                    : Expanded(
+                        child: Align(
+                          alignment: FractionalOffset.bottomRight,
+                          child: IconButton(
+                            icon: Icon(Icons.arrow_forward_ios),
+                            onPressed: () {
+                              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                                  builder: (context) => LoginPage()));
+                            },
+                            
                           ),
-                        )
-                  ],
+                        ),
+                      )
+              ],
             ),
           ),
         ),
       ),
-
     );
   }
 }
