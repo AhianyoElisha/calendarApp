@@ -1,3 +1,5 @@
+import 'package:calendar_store/calendar/calendar.dart';
+import 'package:calendar_store/main/screens/home/home-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -32,15 +34,23 @@ class BottomNavBar extends StatelessWidget {
         children: <Widget>[
           IconButton(
             icon: SvgPicture.asset("assets/icons/home.svg"),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => HomeScreen()));
+            },
           ),
           IconButton(
             icon: SvgPicture.asset("assets/icons/Following.svg"),
-            onPressed: () {},
+            onPressed: () {
+            },
           ),
           IconButton(
             icon: SvgPicture.asset("assets/icons/Glyph.svg"),
-            onPressed: () {},
+            onPressed: () {
+                            Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Calendar()));
+
+            },
           ),
           IconButton(
             icon: SvgPicture.asset("assets/icons/person.svg"),

@@ -3,6 +3,7 @@ import 'package:calendar_store/main/components/search_box.dart';
 import 'package:calendar_store/main/screens/home/components/category_list.dart';
 import 'package:calendar_store/main/screens/home/components/discount_card.dart';
 import 'package:calendar_store/main/screens/home/components/item_list.dart';
+import 'package:calendar_store/calendar/calendar.dart';
 
 class Body extends StatelessWidget {
   @override

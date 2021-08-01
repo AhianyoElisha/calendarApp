@@ -1,10 +1,13 @@
 import 'dart:core';
+import 'dart:ffi';
 
+import 'package:calendar_store/main/screens/home/components/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:calendar_store/calendar/calendar_model.dart';
 import 'package:calendar_store/calendar/db.dart';
 import 'package:calendar_store/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:calendar_store/main/components/bottom_nav_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -22,7 +25,7 @@ class _CalendarState extends State<Calendar> {
   Map<DateTime, List<dynamic>> _events = {};
   List<CalendarItem> _data = [];
 
-  List<dynamic> _selectedEvents = [];
+  static List<dynamic> _selectedEvents = [];
   List<Widget> get _eventWidgets =>
       _selectedEvents.map((e) => events(e)).toList();
 
@@ -207,6 +210,8 @@ class _CalendarState extends State<Calendar> {
           element.name.toString(),
           element.description.toString()
         ]);
+    store.set("selectedEvent", _events);
+
       } else {
         _events[formattedDate] = [
           [
@@ -215,6 +220,8 @@ class _CalendarState extends State<Calendar> {
             element.description.toString()
           ]
         ];
+        store.set("selectedEvent", _events);
+
       }
     });
     setState(() {});
@@ -313,6 +320,8 @@ class _CalendarState extends State<Calendar> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
+      appBar: homeAppBar(context),
+      bottomNavigationBar: BottomNavBar(),
       body: ListView(
         //crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -354,3 +363,15 @@ class _CalendarState extends State<Calendar> {
     );
   }
 }
+
+class GlobalState {
+  final Map<dynamic, dynamic> _data = <dynamic, dynamic>{};
+
+  static GlobalState instance = GlobalState._();
+  GlobalState._();
+
+  set(dynamic key, dynamic value) => _data[key] = value;
+  get(dynamic key) => _data[key];
+}
+
+final GlobalState store = GlobalState.instance;
