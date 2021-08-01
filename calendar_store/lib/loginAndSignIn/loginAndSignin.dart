@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
         _registerYOffset = windowHeight;
         break;
       case 1:
-        _backgroundColor = Color(0xFFBD34C59);
+        _backgroundColor = Color(0xFFF2A50D);
         _headingColor = Colors.white;
 
         _headingTop = 90;
@@ -87,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
         _registerYOffset = windowHeight;
         break;
       case 2:
-        _backgroundColor = Color(0xFFBD34C59);
+        _backgroundColor = Color(0xFFF2A50D);
         _headingColor = Colors.white;
 
         _headingTop = 80;
@@ -184,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                         padding: EdgeInsets.all(20),
                         width: double.infinity,
                         decoration: BoxDecoration(
-                            color: Color(0xFFB40284A),
+                            color: Color(0xFFF2A50D),
                             borderRadius: BorderRadius.circular(50)
                         ),
                         child: Center(
