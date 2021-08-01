@@ -18,19 +18,21 @@ ThemeData light = ThemeData(
     // Section Headings
     headline1: GoogleFonts.montserrat(
         color: Color.fromRGBO(59, 57, 60, 1),
-        fontSize: 19,
+        fontSize: 22,
         fontWeight: FontWeight.bold),
 
     headline2: GoogleFonts.montserrat(
         color: Color.fromRGBO(59, 57, 60, 1),
-        fontSize: 16,
+        fontSize: 19,
         fontWeight: FontWeight.w500),
 
         
 
     // List Font
     bodyText1: GoogleFonts.montserrat(
-        color: Color.fromRGBO(105, 105, 108, 1),height: 1.5),
+        color: Color.fromRGBO(105, 105, 108, 1),
+        fontSize: 16,
+        height: 1.5),
     bodyText2: GoogleFonts.montserrat(
       color: Color.fromRGBO(205, 205, 208, 1),
     ),
@@ -54,21 +56,21 @@ ThemeData dark = ThemeData(
       // Section Headings
       headline1: GoogleFonts.montserrat(
           color: Color.fromRGBO(250, 250, 250, 1),
-          fontSize: 19,
+          fontSize: 22,
           fontWeight: FontWeight.bold),
 
       headline2: GoogleFonts.montserrat(
           color: Color.fromRGBO(225, 225, 225, 1),
-          fontSize: 16,
+          fontSize: 19,
           fontWeight: FontWeight.w500),
 
       // List Font
       bodyText1: GoogleFonts.montserrat(
-          color: Color.fromRGBO(200, 200, 200, 1),fontSize: 15),
+          color: Color.fromRGBO(200, 200, 200, 1),fontSize: 16),
       bodyText2:
           GoogleFonts.montserrat(color: Color.fromRGBO(200, 200, 200, 1)),
       headline5: GoogleFonts.montserrat(
-          color: Color.fromRGBO(200, 200, 200, 1), fontSize: 15),
+          color: Color.fromRGBO(200, 200, 200, 1), fontSize: 17),
 
       // List Font
     ),
