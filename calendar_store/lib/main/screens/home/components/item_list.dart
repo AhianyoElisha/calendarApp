@@ -24,9 +24,10 @@ class _ItemListState extends State<ItemList> {
     DB.init().then((value) => _fetchEvents());
   }
 
- void dispose() {    
-   super.dispose();
+  void dispose() {
+    super.dispose();
   }
+
   void _fetchEvents() async {
     _events = {};
     List<Map<String, dynamic>> _results = await DB.query(CalendarItem.table);
@@ -69,13 +70,13 @@ class _ItemListState extends State<ItemList> {
     return Container(
       margin: EdgeInsets.only(left: 20, right: 15, top: 20, bottom: 20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            offset: Offset(0, 4),
-            blurRadius: 20,
-            color: Color(0xFFB0CCE1).withOpacity(0.32),
+            offset: Offset(0, 2),
+            blurRadius: 10,
+            color: Theme.of(context).primaryColorLight,
           ),
         ],
       ),

@@ -23,11 +23,8 @@ class CategoryItem extends StatelessWidget {
             Text(
               title!,
               style: isActive
-                  ? TextStyle(
-                      color: kTextColor,
-                      fontWeight: FontWeight.bold,
-                    )
-                  : TextStyle(fontSize: 12),
+                  ? Theme.of(context).primaryTextTheme.headline5
+                  : Theme.of(context).primaryTextTheme.bodyText1,
             ),
             if (isActive)
               Container(

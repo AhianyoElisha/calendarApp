@@ -4,7 +4,7 @@ import 'package:calendar_store/theme.dart';
 
 AppBar homeAppBar(BuildContext context) {
   return AppBar(
-    backgroundColor: Colors.white,
+    backgroundColor: Theme.of(context).primaryColor,
     elevation: 0,
     leading: IconButton(
       icon: SvgPicture.asset("assets/icons/menu.svg"),
@@ -19,8 +19,8 @@ AppBar homeAppBar(BuildContext context) {
         children: [
           TextSpan(
             text: "Team",
-            style: TextStyle(color: ksecondaryColor),
-          ),
+            style: Theme.of(context).primaryTextTheme.bodyText2),
+          
           TextSpan(
             text: " 7",
             style: TextStyle(color: kPrimaryColor),

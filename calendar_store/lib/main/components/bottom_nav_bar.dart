@@ -16,7 +16,7 @@ class BottomNavBar extends StatelessWidget {
       width: double.infinity,
       // double.infinity means it cove the available width
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
@@ -33,23 +33,25 @@ class BottomNavBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           IconButton(
-            icon: SvgPicture.asset("assets/icons/home.svg"),
+            icon: SvgPicture.asset(
+              "assets/icons/home.svg",
+            ),
             onPressed: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => HomeScreen()));
             },
           ),
           IconButton(
-            icon: SvgPicture.asset("assets/icons/Following.svg"),
-            onPressed: () {
-            },
+            icon: SvgPicture.asset(
+              "assets/icons/Following.svg",
+            ),
+            onPressed: () {},
           ),
           IconButton(
             icon: SvgPicture.asset("assets/icons/Glyph.svg"),
             onPressed: () {
-                            Navigator.of(context)
+              Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => Calendar()));
-
             },
           ),
           IconButton(

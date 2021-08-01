@@ -17,7 +17,7 @@ class SearchBox extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
         border: Border.all(
-          color: ksecondaryColor.withOpacity(0.32),
+          color: Theme.of(context).accentColor.withOpacity(0.32),
         ),
       ),
       child: TextField(
@@ -26,8 +26,8 @@ class SearchBox extends StatelessWidget {
           border: InputBorder.none,
           icon: SvgPicture.asset("assets/icons/search.svg"),
           hintText: "Search Here",
-          hintStyle: TextStyle(color: ksecondaryColor),
-        ),
+          hintStyle: Theme.of(context).primaryTextTheme.bodyText2
+        )
       ),
     );
   }

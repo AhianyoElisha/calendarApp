@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:calendar_store/theme.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class TitlePriceRating extends StatelessWidget {
   final int? price, numOfReviews;
   final double? rating;
   final String? name;
-  final RatingChangeCallback? onRatingChanged;
   const TitlePriceRating({
     Key? key,
     this.price,
     this.numOfReviews,
     this.rating,
     this.name,
-    this.onRatingChanged,
   }) : super(key: key);
 
   @override
@@ -28,17 +25,11 @@ class TitlePriceRating extends StatelessWidget {
               children: <Widget>[
                 Text(
                   name!,
-                  style: Theme.of(context).textTheme.headline5,
+                  style: Theme.of(context).primaryTextTheme.headline1,
                 ),
                 SizedBox(height: 10),
                 Row(
                   children: <Widget>[
-                    SmoothStarRating(
-                      borderColor: kPrimaryColor,
-                      rating: rating!,
-                      onRated: onRatingChanged!
-                      ,
-                    ),
                     SizedBox(width: 10),
                     Text("$numOfReviews reviews"),
                   ],
