@@ -161,40 +161,29 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ? Expanded(
                         child: Align(
                           alignment: FractionalOffset.bottomRight,
-                          child: TextButton(
-                            onPressed: () {
+                          child: IconButton(
+                            padding: EdgeInsets.all(40),
+                            icon:Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: Colors.white,
+                                  size: 30.0,
+                                ),
+                                onPressed: () {
                               _pageController.nextPage(
                                 duration: Duration(milliseconds: 500),
                                 curve: Curves.ease,
                               );
                             },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Text(
-                                  'Next',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 22.0,
-                                  ),
-                                ),
-                                SizedBox(width: 10.0),
-                                Icon(
-                                  Icons.chevron_right,
-                                  color: Colors.white,
-                                  size: 30.0,
-                                ),
-                              ],
                             ),
                           ),
-                        ),
-                      )
-                    : Expanded(
+                        ):
+                         Expanded(
                         child: Align(
                           alignment: FractionalOffset.bottomRight,
+                        
                           child: IconButton(
-                            icon: Icon(Icons.arrow_forward_ios),
+                            padding: EdgeInsets.all(40),
+                            icon: Icon(Icons.arrow_forward_ios, color: Colors.white,size: 30,),
                             onPressed: () {
                               Navigator.of(context).pushReplacement(MaterialPageRoute(
                                   builder: (context) => LoginPage()));
