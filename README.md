@@ -1,4 +1,4 @@
-# courseApp
+# calendar_store
 **Made with :heartbeat: from Elisha**
 
 ## What sections are implemented?
