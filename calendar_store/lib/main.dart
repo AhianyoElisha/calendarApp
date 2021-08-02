@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:calendar_store/calendar.dart';
-// import 'package:calendar_store/db.dart';
 import 'package:calendar_store/theme.dart';
+import 'package:calendar_store/introScreen/screens/onboarding_screen.dart';
 import 'package:provider/provider.dart';
 
 
@@ -19,8 +18,9 @@ class MyApp extends StatelessWidget {
                   builder: (context, ThemeNotifier notifier, child) {
                 return MaterialApp(
                   debugShowCheckedModeBanner: false,
+                  title: 'Team 7',
                   theme: notifier.isDarkTheme! ? dark : light,
-                  home: Calendar(),
+                  home: OnboardingScreen(),
                 );
               }),
             );
